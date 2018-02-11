@@ -284,7 +284,7 @@ static int tolua_bnd_getpeer(lua_State* L) {
 
 static void tolua_push_globals_table (lua_State* L)
 {
-#if (defined(LUA_VERSION_NUM) && LUA_VERSION_NUM >= 502)
+#if (defined(LUA_VERSION_NUM) && (LUA_VERSION_NUM >= 502)) || (defined(LUAJIT_VERSION_NUM) && (LUAJIT_VERSION_NUM >= 20000))
   lua_pushglobaltable(L);
 #else
   lua_pushvalue(L,LUA_REGISTRYINDEX); /* registry */
