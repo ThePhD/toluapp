@@ -284,13 +284,13 @@ static int tolua_bnd_getpeer(lua_State* L) {
 
 static void tolua_push_globals_table (lua_State* L)
 {
-#if (defined(LUA_VERSION_NUM) && (LUA_VERSION_NUM >= 502)) || (defined(LUAJIT_VERSION_NUM))
-  lua_pushglobaltable(L);
-#else
+#if USE_OLD_CODE
   lua_pushvalue(L,LUA_REGISTRYINDEX); /* registry */
   lua_pushnumber(L,LUA_RIDX_GLOBALS); /* registry globalsindex */
   lua_rawget(L, -2);                  /* registry registry[globalsindex] */
   lua_remove(L, -2);                  /* registry[globalsindex] */
+#else
+  lua_pushglobaltable(L);
 #endif
 }
 
