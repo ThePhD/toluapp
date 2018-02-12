@@ -284,7 +284,7 @@ static int tolua_bnd_getpeer(lua_State* L) {
 
 static void tolua_push_globals_table (lua_State* L)
 {
-#if USE_OLD_CODE
+#ifdef TOLUAPP_USE_OLD_CODE
   lua_pushvalue(L,LUA_REGISTRYINDEX); /* registry */
   lua_pushnumber(L,LUA_RIDX_GLOBALS); /* registry globalsindex */
   lua_rawget(L, -2);                  /* registry registry[globalsindex] */
