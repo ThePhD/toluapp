@@ -14,6 +14,7 @@
 
 #include <stdio.h>
 
+#include "tolua_compat.h"
 #include "tolua++.h"
 
 /* Store at ubox
